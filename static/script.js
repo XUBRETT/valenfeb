@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     yesButton.addEventListener("click", function () {
-        fetch("http://127.0.0.1:5000/submit", {
+        fetch("https://valenfeb14.netlify.app/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ response: "Yes" })
