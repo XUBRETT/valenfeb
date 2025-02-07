@@ -13,7 +13,7 @@ responses = db.dbfeb
 collection = db.collection
 
 try:
-    client.server_info()  # This will throw an exception if unable to connect
+    client.server_info()  
     print("Successfully connected to MongoDB Atlas!")
 except Exception as e:
     print("Error connecting to MongoDB Atlas:", e)
@@ -25,12 +25,9 @@ def home():
 @app.route("/submit", methods=["POST"])
 def submit():
     data = request.json
-    print("Received data:", data) 
     if data and "response" in data:
         result = collection.insert_one({"response": data["response"]})
-        print("Data inserted:", result.inserted_id)
         return jsonify({"message": "Response saved!"}), 200
-    print("Invalid data received")
     return jsonify({"error": "Invalid data"}), 400
 
 @app.route("/static/<path:filename>")

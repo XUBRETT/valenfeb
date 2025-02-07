@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     yesButton.addEventListener("click", function () {
-        fetch("https://valenfeb.onrender.com", {
+        fetch("https://valenfeb.onrender.com/submit", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ response: "Yes" })
@@ -28,6 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Success:", data);
             document.body.innerHTML = "<h1>Yay! Happy Valentine's Day! ❤️</h1>";
         })
-        .catch(error => console.error("Error:", error));
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Something went wrong! Please try again.");
+        });
     });
 });
